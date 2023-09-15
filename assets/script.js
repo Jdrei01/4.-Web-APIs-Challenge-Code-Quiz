@@ -91,7 +91,6 @@ function showQuestions() {
         btn.textContent = questions[0].wordChoice[i]
         choices.appendChild(btn);
 
-        if ()
         //if (event.target.textContent === questions[currentQuestionIndex].answer);
 
 
