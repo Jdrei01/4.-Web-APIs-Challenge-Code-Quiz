@@ -9,15 +9,17 @@
 </head>
 
 <body>
+    <div id="time-left"></div>
+
+    <!-- Highscore button -->
     <div>
         <button class="view-score" id="view-score">View Highscore
-
         </button>
     </div>
 
-    <!-- main outer div -->
+    <!-- Main outer div -->
     <div class="main">
-        <div class="start">
+        <div class="start-screen">
             <h1>
                 Code Quiz Challenge
             </h1>
@@ -25,20 +27,22 @@
                 Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
                 answers will penalize your score/time by <span>15 seconds!</span>
             </p>
-            <button class="button">
+
+            <!-- Start button -->
+            <button class="start-btn">
                 Start Quiz
             </button>
 
-            <h2 id="countdown"></h2>
-            
         </div>
+
+        <!-- Question list -->
         <div class="quiz-box hide">
             <div class="question-title">
 
             </div>
             <div class="choices">
-
             </div>
+
         </div>
     </div>
     <script src="./assets/script.js"></script>
