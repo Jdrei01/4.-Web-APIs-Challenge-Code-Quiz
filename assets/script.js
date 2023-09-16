@@ -5,6 +5,7 @@ var quiz = document.querySelector('.question-title')
 var choices = document.querySelector('.choices')
 var timeLeftEl = document.querySelector('#time-left');
 var viewScore = document.querySelector('.view-score');
+var rightAnswer = 0;
 
 var currentQuestionIndex = 0; // number of questions answered
 var timeLeft = 60;
@@ -18,8 +19,7 @@ var questions = [
                 'A: Toronto Canada',
                 'B: New York',
                 'C: Los Angeles',
-                'D: Brooklyn',
-                'E: nada'
+                'D: Brooklyn'
             ],
         answerIndex: 'A: Toronto Canada'
     },
@@ -52,8 +52,7 @@ var questions = [
                 'A: Los Angeles Lakers',
                 'B: Charlotte Hornets',
                 'C: Undrafted',
-                'D: None of the above',
-                'e', 'e', 'fe'
+                'D: None of the above'
             ],
         answerIndex: 'B: Charlotte Hornets'
     }
@@ -102,10 +101,12 @@ else get the next answer
         quizBox.classList.add('hide')
         // stop the timer and say quiz is done
         clearInterval(interValId);
-        timeLeftEl.textContent= 'You completed the quiz.';
+        timeLeftEl.textContent= 'You completed the quiz. Your score is ' + rightAnswer;
         // show the score
+        //alert('score: ' + rightAnswer);
         // get the initial
         // show the high score
+        viewScore.disabled = false;
     } else {
         // there are still unanswered questions, so get the next answer
         choices.replaceChildren(); // clear out choices
@@ -116,6 +117,13 @@ else get the next answer
             btn.textContent = choice
             btn.addEventListener('click', () => {
                 currentQuestionIndex += 1; // go to the next question by increasing the current question index by 1
+                // check if the answer is correct
+                // check if the answer click is the same as the answerIndex
+                if(choice === question.answerIndex) {
+                    // if the answer is correct, increase the count of correct answer by one
+                    rightAnswer += 1;   
+
+                }
                 showQuestions();
             });
             choices.appendChild(btn);
