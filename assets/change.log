@@ -1,7 +1,8 @@
 1.0 resolve timer stopping at 1 second
 1.1 disable view highscore
+1.2 clicking the answer, go to next question
 
 To-do
 
-* clicking on the next answer and not going to the next question
 * view highscore (displays highscore along with the initials
+* quiz should end after last question is answered

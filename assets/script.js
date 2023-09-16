@@ -7,7 +7,7 @@ var timeLeftEl = document.querySelector('#time-left');
 var viewScore = document.querySelector('.view-score');
 
 var currentQuestionIndex = 0;
-var timeLeft = 3;
+var timeLeft = 60;
 var interValId;
 
 
@@ -19,7 +19,8 @@ var questions = [
                 'A: Toronto Canada',
                 'B: New York',
                 'C: Los Angeles',
-                'D: Brooklyn'
+                'D: Brooklyn',
+                'E: nada'
             ],
         answerIndex: 'A: Toronto Canada'
     },
@@ -52,7 +53,8 @@ var questions = [
                 'A: Los Angeles Lakers',
                 'B: Charlotte Hornets',
                 'C: Undrafted',
-                'D: None of the above'
+                'D: None of the above',
+                'e', 'e', 'fe'
             ],
         answerIndex: 'B: Charlotte Hornets'
     }
@@ -91,19 +93,31 @@ function showQuestions() {
 
     quizBox.classList.remove('hide')
     startScreenEl.classList.add('hide')
-    quiz.textContent = questions[0].questionsTitle
-    for (var i = 0; i < questions.length; i++) {
+    choices.replaceChildren(); // clear out choices
+    var question = questions[currentQuestionIndex];
+    quiz.textContent = question.questionsTitle
+    question.wordChoice.forEach((choice, choiceIndex) => {
         var btn = document.createElement('button')
-        btn.textContent = questions[0].wordChoice[i]
+        btn.textContent = choice
+        btn.addEventListener('click', () => {
+            currentQuestionIndex += 1; // go to the next question by increasing the current question index by 1
+            showQuestions();
+        });
         choices.appendChild(btn);
 
         //if (event.target.textContent === questions[currentQuestionIndex].answer);
 
 
 
-    }
+    });
 
 }
 
 startBtnEl.addEventListener('click', showQuestions);
+/*
+at beginning, currentQuestionIndex = 0
+click on start button will call showQuestions(0) // eg show the question at the current question index
+when an answer is click, increase the index by 1, and call show question
+
+*/
 
