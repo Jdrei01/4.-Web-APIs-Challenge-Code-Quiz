@@ -4,9 +4,10 @@ var startBtnEl = document.querySelector('.start-btn')
 var quiz = document.querySelector('.question-title')
 var choices = document.querySelector('.choices')
 var timeLeftEl = document.querySelector('#time-left');
+var viewScore = document.querySelector('.view-score');
 
 var currentQuestionIndex = 0;
-var timeLeft = 60;
+var timeLeft = 3;
 var interValId;
 
 
@@ -61,10 +62,13 @@ var questions = [
 function functionThatRepeats() {
     timeLeftEl.textContent = `${timeLeft} second(s)`;
     timeLeft = timeLeft - 1;
+    viewScore.disabled = true;
 
+    // Time is equal to 0, so QUIZ is up! 
     if (timeLeft <= 0) {
         clearInterval(interValId);
         timeLeftEl.textContent= 'Time is UP!';
+        viewScore.disabled = false;
         
     }
 }
