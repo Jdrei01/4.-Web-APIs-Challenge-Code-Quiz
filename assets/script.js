@@ -64,6 +64,8 @@ function functionThatRepeats() {
 
     if (timeLeft <= 0) {
         clearInterval(interValId);
+        timeLeftEl.textContent= 'Time is UP!';
+        
     }
 }
 

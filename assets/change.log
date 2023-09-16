@@ -1,0 +1,8 @@
+1.0 resolve timer stopping at 1 second
+
+To-do
+
+* resolve the timer stopping at 1 second
+* clicking on the next answer and not going to the next question
+* disabled view highscore when quiz is in progress
+* view highscore (displays highscore along with the initials
