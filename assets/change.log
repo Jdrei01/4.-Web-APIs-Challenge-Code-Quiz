@@ -2,10 +2,12 @@
 1.1 disable view highscore
 1.2 clicking the answer, go to next question
 1.3 quiz end after the last question is answered
+1.4 show the number of correct answer at the end of the quiz
+1.5 count the number of correct answer
 
 To-do
 
 * view highscore (displays highscore along with the initials
-* count the number of correct answer
-* show the number of correct answer at the end of the quiz
 * allow the user to submit his initial to save if high score
+* subtract time left by 15 seconds if wrong answer
+*l ocal storage
