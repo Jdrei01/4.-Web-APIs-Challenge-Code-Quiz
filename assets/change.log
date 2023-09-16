@@ -1,8 +1,11 @@
 1.0 resolve timer stopping at 1 second
 1.1 disable view highscore
 1.2 clicking the answer, go to next question
+1.3 quiz end after the last question is answered
 
 To-do
 
 * view highscore (displays highscore along with the initials
-* quiz should end after last question is answered
+* tabulate the number of correct answer
+* show the number of correct answer at the end of the quiz
+* allow the user to submit his initial to save if high score

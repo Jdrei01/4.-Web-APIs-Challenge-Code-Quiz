@@ -6,10 +6,9 @@ var choices = document.querySelector('.choices')
 var timeLeftEl = document.querySelector('#time-left');
 var viewScore = document.querySelector('.view-score');
 
-var currentQuestionIndex = 0;
+var currentQuestionIndex = 0; // number of questions answered
 var timeLeft = 60;
 var interValId;
-
 
 var questions = [
     {
@@ -93,31 +92,39 @@ function showQuestions() {
 
     quizBox.classList.remove('hide')
     startScreenEl.classList.add('hide')
-    choices.replaceChildren(); // clear out choices
-    var question = questions[currentQuestionIndex];
-    quiz.textContent = question.questionsTitle
-    question.wordChoice.forEach((choice, choiceIndex) => {
-        var btn = document.createElement('button')
-        btn.textContent = choice
-        btn.addEventListener('click', () => {
-            currentQuestionIndex += 1; // go to the next question by increasing the current question index by 1
-            showQuestions();
+    /*
+if the number of questions answered is more than the max number of questions, end the quiz
+else get the next answer
+    */
+    if(currentQuestionIndex >= questions.length) {
+        // number of questions answered is more than the total number of questions, so end the quiz
+        // hide the quiz-box question & answers
+        quizBox.classList.add('hide')
+        // stop the timer and say quiz is done
+        clearInterval(interValId);
+        timeLeftEl.textContent= 'You completed the quiz.';
+        // show the score
+        // get the initial
+        // show the high score
+    } else {
+        // there are still unanswered questions, so get the next answer
+        choices.replaceChildren(); // clear out choices
+        var question = questions[currentQuestionIndex];
+        quiz.textContent = question.questionsTitle
+        question.wordChoice.forEach((choice, choiceIndex) => {
+            var btn = document.createElement('button')
+            btn.textContent = choice
+            btn.addEventListener('click', () => {
+                currentQuestionIndex += 1; // go to the next question by increasing the current question index by 1
+                showQuestions();
+            });
+            choices.appendChild(btn);
+    
+            //if (event.target.textContent === questions[currentQuestionIndex].answer);
         });
-        choices.appendChild(btn);
-
-        //if (event.target.textContent === questions[currentQuestionIndex].answer);
-
-
-
-    });
+    
+    }
 
 }
 
 startBtnEl.addEventListener('click', showQuestions);
-/*
-at beginning, currentQuestionIndex = 0
-click on start button will call showQuestions(0) // eg show the question at the current question index
-when an answer is click, increase the index by 1, and call show question
-
-*/
-
