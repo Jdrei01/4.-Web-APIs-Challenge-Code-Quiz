@@ -6,8 +6,8 @@
 1.5 count the number of correct answer
 1.6 allow user to save initial and high score
 1.7 subtract time left by 15 seconds if wrong answer
+1.8 view high score
 
 To-do
 
-* view highscore (displays highscore along with the initials
 * local storage

@@ -6,6 +6,7 @@ var quiz = document.querySelector('.question-title')
 var choices = document.querySelector('.choices')
 var timeLeftEl = document.querySelector('#time-left');
 var viewScore = document.querySelector('.view-score');
+var highScore = document.querySelector('#high-score');
 var rightAnswer = 0;
 
 var currentQuestionIndex = 0; // number of questions answered
@@ -104,12 +105,12 @@ function saveScore(score) {
     localStorage.setItem('scores', JSON.stringify(savedScores));
 }
 function showQuestions() {
-var inputBtn = document.querySelector('#inputBtn')
+    var inputBtn = document.querySelector('#inputBtn')
     quizBox.classList.remove('hide')
     startScreenEl.classList.add('hide')
     /*
-if the number of questions answered is more than the max number of questions, end the quiz
-else get the next answer
+        if the number of questions answered is more than the max number of questions, end the quiz
+        else get the next answer
     */
     if (currentQuestionIndex >= questions.length) {
         // number of questions answered is more than the total number of questions, so end the quiz
@@ -160,3 +161,13 @@ else get the next answer
 }
 
 startBtnEl.addEventListener('click', showQuestions);
+
+/**
+ * show high score
+ *
+ */
+ function showHighScore() {
+    highScore.textContent = "high score " + JSON.stringify(savedScores);
+ }
+
+viewScore.addEventListener('click', showHighScore);
