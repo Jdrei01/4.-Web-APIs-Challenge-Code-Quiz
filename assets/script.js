@@ -72,7 +72,7 @@ function functionThatRepeats() {
         clearInterval(interValId);
         timeLeftEl.textContent = 'Time is UP!';
         viewScore.disabled = false;
-        
+
 
     }
 }
@@ -112,17 +112,18 @@ function showQuestions() {
         if the number of questions answered is more than the max number of questions, end the quiz
         else get the next answer
     */
+
     if (currentQuestionIndex >= questions.length) {
         // number of questions answered is more than the total number of questions, so end the quiz
         // hide the quiz-box question & answers
         quizBox.classList.add('hide');
         // stop the timer and say quiz is done
         clearInterval(interValId);
-        timeLeftEl.textContent = 'You completed the quiz. Your score is ' + rightAnswer;
+        timeLeftEl.textContent = 'Quiz completed!\n Your final score is: ' + rightAnswer;
         saveScreenEl.classList.remove('hide');
         //var input = document.createElement('input');
         //timeLeftEl.append(input);
-        inputBtn.addEventListener('click', ()=>{
+        inputBtn.addEventListener('click', () => {
             saveScore(rightAnswer)
         })
         // show the score
