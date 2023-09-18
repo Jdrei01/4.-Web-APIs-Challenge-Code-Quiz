@@ -61,6 +61,8 @@ var questions = [
     }
 ]
 
+localStorage.clear();
+
 // function to display the current time in our 'time-left' then modify the time left
 function functionThatRepeats() {
     timeLeftEl.textContent = `${timeLeft} second(s)`;
@@ -168,7 +170,12 @@ startBtnEl.addEventListener('click', showQuestions);
  *
  */
  function showHighScore() {
-    highScore.textContent = "high score " + JSON.stringify(savedScores);
+    var highScoreStr = "no high score found";
+    if(savedScores && (savedScores.length > 0)) {
+        var myHighScore = savedScores[0];
+        highScoreStr = `${myHighScore.initial} ${myHighScore.score}`;
+    }
+    highScore.textContent = `high score: ${highScoreStr}`;
  }
 
 viewScore.addEventListener('click', showHighScore);
