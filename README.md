@@ -17,3 +17,6 @@ Created by Jandrei Timoteo with the help of Tutor Matthew Calimbas.
 
 # Website
 https://jdrei01.github.io/4.-Web-APIs-Challenge-Code-Quiz/
+
+# Screenshots
+![screenshot of website](./assets/Images/Images.png)
