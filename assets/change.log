@@ -4,10 +4,10 @@
 1.3 quiz end after the last question is answered
 1.4 show the number of correct answer at the end of the quiz
 1.5 count the number of correct answer
+1.6 allow user to save initial and high score
 
 To-do
 
 * view highscore (displays highscore along with the initials
-* allow the user to submit his initial to save if high score
 * subtract time left by 15 seconds if wrong answer
-*l ocal storage
+* local storage

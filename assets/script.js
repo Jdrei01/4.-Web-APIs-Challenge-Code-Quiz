@@ -1,4 +1,5 @@
-var startScreenEl = document.querySelector('.start-screen')
+var startScreenEl = document.querySelector('.start-screen');
+var saveScreenEl = document.querySelector('.saveScreen');
 var quizBox = document.querySelector('.quiz-box')
 var startBtnEl = document.querySelector('.start-btn')
 var quiz = document.querySelector('.question-title')
@@ -69,6 +70,7 @@ function functionThatRepeats() {
         clearInterval(interValId);
         timeLeftEl.textContent = 'Time is UP!';
         viewScore.disabled = false;
+        
 
     }
 }
@@ -85,10 +87,23 @@ function startTimer() {
 }
 
 startBtnEl.addEventListener('click', startTimer);
+var savedScores = JSON.parse(localStorage.getItem('scores')) || []
 
 // function to show current question and choices for that question
+function saveScore(score) {
+    var initial = document.querySelector('#input').value
+    console.log(initial, score);
+    var playerScore = {
+        initial: initial,
+        score: score,
+    }
+    console.log(savedScores)
+    savedScores.push(playerScore)
+    console.log(savedScores)
+    localStorage.setItem('scores', JSON.stringify(savedScores));
+}
 function showQuestions() {
-
+var inputBtn = document.querySelector('#inputBtn')
     quizBox.classList.remove('hide')
     startScreenEl.classList.add('hide')
     /*
@@ -98,10 +113,16 @@ else get the next answer
     if (currentQuestionIndex >= questions.length) {
         // number of questions answered is more than the total number of questions, so end the quiz
         // hide the quiz-box question & answers
-        quizBox.classList.add('hide')
+        quizBox.classList.add('hide');
         // stop the timer and say quiz is done
         clearInterval(interValId);
         timeLeftEl.textContent = 'You completed the quiz. Your score is ' + rightAnswer;
+        saveScreenEl.classList.remove('hide');
+        //var input = document.createElement('input');
+        //timeLeftEl.append(input);
+        inputBtn.addEventListener('click', ()=>{
+            saveScore(rightAnswer)
+        })
         // show the score
         //alert('score: ' + rightAnswer);
         // get the initial
