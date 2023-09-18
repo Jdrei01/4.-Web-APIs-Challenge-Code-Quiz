@@ -10,6 +10,7 @@ var rightAnswer = 0;
 
 var currentQuestionIndex = 0; // number of questions answered
 var timeLeft = 60;
+var timeLeftWrongAnswerPenalty = 15; // penalty for wrong answer is deduction of 15 seconds
 var interValId;
 
 var questions = [
@@ -70,7 +71,7 @@ function functionThatRepeats() {
         clearInterval(interValId);
         timeLeftEl.textContent = 'Time is UP!';
         viewScore.disabled = false;
-        
+
 
     }
 }
@@ -103,24 +104,25 @@ function saveScore(score) {
     localStorage.setItem('scores', JSON.stringify(savedScores));
 }
 function showQuestions() {
-var inputBtn = document.querySelector('#inputBtn')
+    var inputBtn = document.querySelector('#inputBtn')
     quizBox.classList.remove('hide')
     startScreenEl.classList.add('hide')
     /*
 if the number of questions answered is more than the max number of questions, end the quiz
 else get the next answer
     */
+
     if (currentQuestionIndex >= questions.length) {
         // number of questions answered is more than the total number of questions, so end the quiz
         // hide the quiz-box question & answers
         quizBox.classList.add('hide');
         // stop the timer and say quiz is done
         clearInterval(interValId);
-        timeLeftEl.textContent = 'You completed the quiz. Your score is ' + rightAnswer;
+        timeLeftEl.textContent = 'Quiz completed!\n Your final score is: ' + rightAnswer;
         saveScreenEl.classList.remove('hide');
         //var input = document.createElement('input');
         //timeLeftEl.append(input);
-        inputBtn.addEventListener('click', ()=>{
+        inputBtn.addEventListener('click', () => {
             saveScore(rightAnswer)
         })
         // show the score
@@ -144,6 +146,9 @@ else get the next answer
                     // if the answer is correct, increase the count of correct answer by one
                     rightAnswer += 1;
 
+                } else {
+                    // if the answer is incorrect, decrease the time left
+                    timeLeft -= timeLeftWrongAnswerPenalty;
                 }
                 showQuestions();
             });
