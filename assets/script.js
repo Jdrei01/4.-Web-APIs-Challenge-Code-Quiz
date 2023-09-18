@@ -10,6 +10,7 @@ var rightAnswer = 0;
 
 var currentQuestionIndex = 0; // number of questions answered
 var timeLeft = 60;
+var timeLeftWrongAnswerPenalty = 15; // penalty for wrong answer is deduction of 15 seconds
 var interValId;
 
 var questions = [
@@ -144,6 +145,9 @@ else get the next answer
                     // if the answer is correct, increase the count of correct answer by one
                     rightAnswer += 1;
 
+                } else {
+                    // if the answer is incorrect, decrease the time left
+                    timeLeft -= timeLeftWrongAnswerPenalty;
                 }
                 showQuestions();
             });
