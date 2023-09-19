@@ -13,7 +13,7 @@ This is a timed coding quiz. This coding quiz uses JavaScript fundamentals to st
 * JavaScript
 
 # Credits
-Created by Jandrei Timoteo with the help of Tutor Matthew Calimbas.
+Created by Jandrei Timoteo with the help of Tutor Matthew Calimbas and Phuoc Do.
 
 # Website
 https://jdrei01.github.io/4.-Web-APIs-Challenge-Code-Quiz/
