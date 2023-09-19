@@ -90,20 +90,26 @@ function startTimer() {
 }
 
 startBtnEl.addEventListener('click', startTimer);
-localStorage.clear();
+//localStorage.clear();
 // use associative array since there is only 1 high score
 var savedScores = JSON.parse(localStorage.getItem('scores')) || {}
 
-// function to show current question and choices for that question
+/**
+ * save the score and initial if the score is higher than the current high score
+ */
 function saveScore(score) {
     var initial = document.querySelector('#input').value
     var playerScore = {
         initial: initial,
         score: score,
     }
-    savedScores = playerScore;
-    localStorage.setItem('scores', JSON.stringify(savedScores));
+    // if the player score is higher than the current high score, then save the player score
+    if( (Object.keys(savedScores).length === 0) || (playerScore.score > savedScores.score)) {
+        savedScores = playerScore;
+        localStorage.setItem('scores', JSON.stringify(savedScores));
+    }
 }
+
 function showQuestions() {
     var inputBtn = document.querySelector('#inputBtn')
     quizBox.classList.remove('hide')
@@ -124,7 +130,8 @@ function showQuestions() {
         //var input = document.createElement('input');
         //timeLeftEl.append(input);
         inputBtn.addEventListener('click', () => {
-            saveScore(rightAnswer)
+            saveScore(rightAnswer);
+            saveScreenEl.classList.add('hide'); // hide the save after saving the score
         })
         // show the score
         //alert('score: ' + rightAnswer);
