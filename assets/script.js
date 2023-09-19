@@ -61,7 +61,6 @@ var questions = [
     }
 ]
 
-localStorage.clear();
 
 // function to display the current time in our 'time-left' then modify the time left
 function functionThatRepeats() {
@@ -91,19 +90,18 @@ function startTimer() {
 }
 
 startBtnEl.addEventListener('click', startTimer);
-var savedScores = JSON.parse(localStorage.getItem('scores')) || []
+localStorage.clear();
+// use associative array since there is only 1 high score
+var savedScores = JSON.parse(localStorage.getItem('scores')) || {}
 
 // function to show current question and choices for that question
 function saveScore(score) {
     var initial = document.querySelector('#input').value
-    console.log(initial, score);
     var playerScore = {
         initial: initial,
         score: score,
     }
-    console.log(savedScores)
-    savedScores.push(playerScore)
-    console.log(savedScores)
+    savedScores = playerScore;
     localStorage.setItem('scores', JSON.stringify(savedScores));
 }
 function showQuestions() {
@@ -171,9 +169,9 @@ startBtnEl.addEventListener('click', showQuestions);
  */
  function showHighScore() {
     var highScoreStr = "no high score found";
-    if(savedScores && (savedScores.length > 0)) {
-        var myHighScore = savedScores[0];
-        highScoreStr = `${myHighScore.initial} ${myHighScore.score}`;
+    var mySavedScores = JSON.parse(localStorage.getItem('scores'))
+    if(mySavedScores) {
+        highScoreStr = `${mySavedScores.initial} ${mySavedScores.score}`;
     }
     highScore.textContent = `high score: ${highScoreStr}`;
  }
