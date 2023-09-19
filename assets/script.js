@@ -184,3 +184,5 @@ startBtnEl.addEventListener('click', showQuestions);
  }
 
 viewScore.addEventListener('click', showHighScore);
+
+//localStorage.clear();
